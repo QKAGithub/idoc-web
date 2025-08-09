@@ -1,1 +1,95 @@
-<!DOCTYPE html><html><head><meta charset='utf-8'><title>IDOC Pro</title></head><body><h1>IDOC Pro</h1></body></html>
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>IDOC — Liquid Glass Backoffice</title>
+  <meta name="description" content="IDOC: การทำจ่าย เป็นเรื่องง่ายสำหรับทุกคน — Bilingual TH/EN">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Prompt:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="./styles.css"/>
+  <link rel="icon" href="./assets/logo.svg">
+</head>
+<body class="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-100 text-slate-800">
+  <div id="toast" class="fixed top-6 right-6 z-[100] hidden"></div>
+
+  <div class="grid min-h-screen" style="grid-template-columns: 280px 1fr;">
+    <!-- Sidebar -->
+    <aside class="hidden md:flex flex-col border-r border-slate-200 bg-white/80 backdrop-blur-xl">
+      <div class="flex items-center gap-3 px-6 py-5 border-b border-slate-100">
+        <img src="./assets/logo.svg" alt="IDOC" class="w-9 h-9"/>
+        <div>
+          <div class="font-extrabold tracking-tight text-xl text-slate-900">IDOC</div>
+          <div class="text-xs text-slate-500" data-i18n="tagline">การทำจ่าย เป็นเรื่องง่ายสำหรับทุกคน</div>
+        </div>
+      </div>
+      <nav class="p-3 space-y-1" id="sideNav"></nav>
+      <div class="mt-auto p-4 text-xs text-slate-500">
+        <div class="rounded-2xl bg-slate-50 border border-slate-200 p-3">
+          <div class="text-slate-600 flex items-center justify-between">
+            <span>© <span id="year"></span> • IDOC</span><span>v1.0</span>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main -->
+    <div class="flex flex-col">
+      <!-- Topbar -->
+      <header class="sticky top-0 z-50 border-b border-slate-200 bg-white/70 backdrop-blur-xl">
+        <div class="px-4 md:px-6 py-3 flex items-center justify-between gap-3">
+          <div class="flex items-center gap-2">
+            <button id="menuBtn" class="md:hidden p-2 rounded-xl hover:bg-slate-100" aria-label="Menu">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M4 6h16M4 12h16M4 18h16" stroke="#0f172a" stroke-width="2" stroke-linecap="round"/></svg>
+            </button>
+            <button id="backBtn" class="p-2 rounded-xl hover:bg-slate-100" aria-label="Back">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M15 18l-6-6 6-6" stroke="#0f172a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="font-semibold text-slate-800" id="breadcrumb">Dashboard</div>
+          </div>
+          <div class="flex items-center gap-2">
+            <select id="langSelect" class="rounded-xl border-slate-200 text-sm px-3 py-1.5 bg-white shadow-sm focus:outline-none">
+              <option value="th">ไทย</option>
+              <option value="en">English</option>
+            </select>
+            <a href="#create" id="primaryBtn" class="hidden sm:inline-flex bg-blue-600 text-white px-4 py-2 rounded-xl shadow hover:bg-blue-700 transition" data-i18n="newDocument">ออกเอกสารใหม่</a>
+          </div>
+        </div>
+      </header>
+
+      <!-- Content -->
+      <main id="viewRoot" class="p-4 md:p-6 space-y-6 max-w-7xl mx-auto w-full"></main>
+    </div>
+  </div>
+
+  <!-- Mobile Drawer -->
+  <div id="drawer" class="fixed inset-0 z-50 hidden">
+    <div class="absolute inset-0 bg-slate-900/30"></div>
+    <div class="absolute left-0 top-0 bottom-0 w-[75%] max-w-xs bg-white shadow-xl p-4">
+      <div class="flex items-center gap-3 mb-4">
+        <img src="./assets/logo.svg" class="w-8 h-8"/><div class="font-bold">IDOC</div>
+      </div>
+      <nav id="drawerNav" class="space-y-1"></nav>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div id="modal" class="fixed inset-0 z-[60] hidden">
+    <div class="absolute inset-0 bg-slate-900/40"></div>
+    <div class="absolute inset-0 flex items-center justify-center p-4">
+      <div class="card max-w-xl w-full p-0 overflow-hidden">
+        <div class="px-5 py-3 border-b border-slate-100 font-semibold" id="modalTitle">Title</div>
+        <div class="p-5" id="modalBody">Body</div>
+        <div class="px-5 py-3 border-t border-slate-100 flex justify-end gap-2">
+          <button id="modalCancel" class="btn ghost" data-i18n="cancel">ยกเลิก</button>
+          <button id="modalOk" class="btn primary" data-i18n="save">บันทึก</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="./app.js"></script>
+</body>
+</html>

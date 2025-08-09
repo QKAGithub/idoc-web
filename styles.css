@@ -1,1 +1,30 @@
-body { font-family: sans-serif; }
+:root{ --brand:#2563EB; }
+*{font-family: Inter, Prompt, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Noto Sans, Helvetica, Arial, Apple Color Emoji, Segoe UI Emoji}
+.card{ @apply bg-white/80 backdrop-blur-xl border border-slate-200 rounded-2xl shadow-sm; }
+.btn{ @apply px-3 py-2 rounded-xl text-sm transition; }
+.btn.primary{ @apply bg-blue-600 text-white hover:bg-blue-700 shadow; }
+.btn.secondary{ @apply bg-slate-900 text-white hover:bg-black; }
+.btn.ghost{ @apply bg-transparent hover:bg-slate-100; }
+.input{ @apply w-full rounded-xl border border-slate-200 px-3 py-2 bg-white focus:outline-none focus:ring-2 focus:ring-blue-200; }
+.label{ @apply text-sm font-medium text-slate-700; }
+.badge{ @apply text-xs px-2 py-1 rounded-lg; }
+.badge-green{ @apply bg-emerald-100 text-emerald-700; }
+.badge-yellow{ @apply bg-amber-100 text-amber-700; }
+.badge-red{ @apply bg-rose-100 text-rose-700; }
+.nav-item{ @apply w-full flex items-center gap-3 px-3 py-2 rounded-xl text-slate-700 hover:bg-slate-100; }
+.nav-item.active{ @apply bg-blue-50 text-blue-700; }
+.table{ @apply w-full text-sm; }
+.table th{ @apply text-left bg-slate-50 p-3 border-b border-slate-200; }
+.table td{ @apply p-3 border-b border-slate-100; }
+.tile{ @apply card p-6 flex flex-col gap-2 hover:shadow-md cursor-pointer; }
+.step{ @apply flex items-center gap-2; }
+.step .dot{ @apply w-7 h-7 rounded-full flex items-center justify-center text-xs font-semibold; }
+.step.active .dot{ @apply bg-blue-600 text-white; }
+.step.done .dot{ @apply bg-emerald-600 text-white; }
+.step .label{ @apply text-sm text-slate-600; }
+.toast{ @apply bg-slate-900 text-white rounded-xl shadow px-4 py-2 mb-2; }
+@media print {
+  #menuBtn,#backBtn,#langSelect,#primaryBtn,#sideNav,#drawer,#toast{ display:none !important; }
+  body{ background:#fff; }
+  .card, .shadow, .shadow-sm, .shadow-md { box-shadow:none !important; }
+}
